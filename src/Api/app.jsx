@@ -23,4 +23,8 @@ const checkIfCanSync = () => {
     return true;
 };
 
-export default { checkIfCanSync };
+const app = {
+    checkIfCanSync
+}
+
+export default  app

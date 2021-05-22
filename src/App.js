@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import logo from './logo.svg';
+
 import './App.css';
 import app from './Api/app'
 import cms from './Api/cms'
