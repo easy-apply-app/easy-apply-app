@@ -1,25 +1,34 @@
+import React, { useEffect, useState } from 'react'
 import logo from './logo.svg';
 import './App.css';
+import app from './Api/app'
+import cms from './Api/cms'
 
 function App() {
+const [institutions, setInstitutions] = useState([]);
+
+const checkAndSync = async () => {
+  if (app.checkIfCanSync()) {
+    const response = await cms.getAllInstitutions();
+    setInstitutions(response)
+    return;
+  }
+
+  const response =  JSON.parse(window.localStorage.getItem('institutions'));
+  setInstitutions(response);
+}
+
+  useEffect(() => checkAndSync(), []);
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {institutions.map(({ name }) => (
+      <div>{name}</div>))}
     </div>
   );
 }
 
 export default App;
+
