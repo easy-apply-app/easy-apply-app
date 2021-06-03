@@ -1,34 +1,56 @@
-import React, { useEffect, useState } from 'react'
+import React, { Component } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import axios from "axios";
+import "./App.css";
+import Home from "./account/Home";
+import Login from "./account/Login";
+import Nav from "./account/Nav";
+import Register from "./account/Register";
 
-import './App.css';
-import app from './Api/app'
-import cms from './Api/cms'
+export default class App extends Component {
+  state = {};
+  componentDidMount() {
+    axios.get("user").then(
+      (res) => {
+        this.setState({
+          user: res.data,
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  };
 
-function App() {
-const [institutions, setInstitutions] = useState([]);
+setUser = user => {
+  this.setState({
+    user: user,
+  });
+}
 
-const checkAndSync = async () => {
-  if (app.checkIfCanSync()) {
-    const response = await cms.getAllInstitutions();
-    setInstitutions(response)
-    return;
+  render() {
+    return (
+      <BrowserRouter>
+
+        <div className="App">
+
+          <Nav user={this.state.user} setUser={this.setUser}/>
+
+          <div className="auth-wrapper">
+
+            <div className="auth-inner">
+              <Switch>
+                <Route exact path="/" component={() => <Home user={this.state.user} />}/>
+                <Route exact path="login" component={() => <Login setUser={this.setUser} />}/>
+                <Route exact path="register" component={() => <Register user={this.state.user} />}/>
+              </Switch>
+              
+              <Home />
+            </div>
+          </div>
+        </div>
+      </BrowserRouter>
+    );
   }
-
-  const response =  JSON.parse(window.localStorage.getItem('institutions'));
-  setInstitutions(response);
 }
-
-  useEffect(() => checkAndSync(), []);
-
-
-
-  return (
-    <div>
-      {institutions.map(({ name }) => (
-      <div>{name}</div>))}
-    </div>
-  );
-}
-
-export default App;
-
