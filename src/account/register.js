@@ -4,6 +4,8 @@ import axios from 'axios';
 
 export default class Register extends Component{
 
+    state = {};
+
     handleSubmit = e => {
         e.preventDefault();
         const data = {
@@ -20,15 +22,30 @@ export default class Register extends Component{
             }
         ).catch(
             err => {
-                console.log(err);
+                this.setState({
+                    message: err.response.data.message
+                })
             }
         )
     }
 
     render() {
-        
+
+        let error = '';
+
+        if (this.state.message) {
+            error = (
+                <div className="alert alert-danger" role="alert">
+                    {this.state.message}
+                </div>
+            )
+        }
+
+
         return(
-            <form onSubmit={this.handleSubmit}> 
+            <form onSubmit={this.handleSubmit}>
+                {error} 
+                
                 <h3>Sign up</h3>
 
                 <div className="form-group">

@@ -3,10 +3,13 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import "./App.css";
-import Home from "./account/Home";
-import Login from "./account/Login";
-import Nav from "./account/Nav";
-import Register from "./account/Register";
+import Home from "./account/home";
+import Login from "./account/login";
+import Nav from "./account/nav";
+import Register from "./account/register";
+import { Forgot } from "./account/forgot.js";
+import { Reset } from "./account/reset";
+
 
 export default class App extends Component {
   state = {};
@@ -30,6 +33,7 @@ setUser = user => {
 }
 
   render() {
+
     return (
       <BrowserRouter>
 
@@ -42,10 +46,12 @@ setUser = user => {
             <div className="auth-inner">
               <Switch>
                 <Route exact path="/" component={() => <Home user={this.state.user} />}/>
-                <Route exact path="login" component={() => <Login setUser={this.setUser} />}/>
-                <Route exact path="register" component={() => <Register user={this.state.user} />}/>
+                <Route exact path="/login" component={() => <Login setUser={this.setUser} />}/>
+                <Route exact path="/register" component={Register}/>
+                <Route exact path="/forgot" component={Forgot}/>
+                <Route exact path="/reset" component={Reset}/>
               </Switch>
-              
+
               <Home />
             </div>
           </div>
