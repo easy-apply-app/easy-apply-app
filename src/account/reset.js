@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 
 import axios from 'axios';
+import { Redirect } from 'react-router';
 
-export class Reset extends Component {
+export class Reset extends Component{
+    state = {}
 
     handleSubmit = e => {
         e.preventDefault();
@@ -48,7 +50,7 @@ export class Reset extends Component {
                 </div>
 
 
-                <button className="btn btn-primary btn-block">Login</button>
+                <button className="btn btn-primary btn-block">Submit</button>
              
             </form>
         )
