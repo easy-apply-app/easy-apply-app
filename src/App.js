@@ -1,18 +1,34 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import "./App.css";
-import Home from "./account/home";
-import Login from "./account/login";
-import Nav from "./account/nav";
-import Register from "./account/register";
-import { Forgot } from "./account/forgot.js";
-import { Reset } from "./account/reset";
+import Home from "./views/home";
+import Login from "./views/login";
+import Nav from "./views/nav";
+import Register from "./views/register";
+import { Forgot } from "./views/forgot.jsx";
+import { Reset } from "./views/reset";
+// import users  from "./api/users";
 
 
 export default class App extends Component {
   state = {};
+
+  //  [message, setMessage] = useState("")
+
+  // handleClick = (e) => {
+  //   this.setState({timeoutModal: false});
+  // }
+
+  // handleRegister = async () => {
+  //   const response = await users.register("namhlamthi21@gmail.com", "hello");
+  //   if (response instanceof Error) setState(response.toString());
+  // };
+
+  // handleLogIn = async () => {
+  //   users.register("namhlamthi21@gmail.com", "hello");
+  // };
+
   componentDidMount() {
     axios.get("user").then(
       (res) => {
@@ -50,6 +66,7 @@ setUser = user => {
                 <Route exact path="/register" component={Register}/>
                 <Route exact path="/forgot" component={Forgot}/>
                 <Route exact path="/reset" component={Reset}/>
+                {/* <Route exact path="/users" component={Users}/> */}
               </Switch>
 
               <Home />
