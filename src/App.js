@@ -2,13 +2,18 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
+// import users  from "./api/web";
+// import Cms from "./api/cms";
+// import Web from "./api/web.jsx";
 import Home from "./views/home";
 import Login from "./views/login";
 import Nav from "./views/nav";
 import Register from "./views/register";
-import { Forgot } from "./views/forgot.jsx";
-import { Reset } from "./views/reset";
-// import users  from "./api/users";
+
+import  Reset  from "./views/reset";
+import Name from "./views/name";
+import Forgot from "./views/forgot";
+
 
 
 export default class App extends Component {
@@ -66,7 +71,8 @@ setUser = user => {
                 <Route exact path="/register" component={Register}/>
                 <Route exact path="/forgot" component={Forgot}/>
                 <Route exact path="/reset" component={Reset}/>
-                {/* <Route exact path="/users" component={Users}/> */}
+                <Route exact path="/name" component={Name}/>
+                
               </Switch>
 
               <Home />

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 import { Redirect } from "react-router";
 
-export default class Login extends Component {
+export default class Name extends Component {
   state = {};
 
   handleSubmit = (e) => {
@@ -49,33 +48,40 @@ export default class Login extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         {error}
-        <h3>Login</h3>
+        
+
         <TextField
-          label="Email"
+          label="Province"
           variant="filled"
-          type="email"
+          type="text"
           required
           //   value={email}
-          onChange={(e) => (this.email = e.target.value)}
+          onChange={(e) => (this.province = e.target.value)}
         />
 
         <TextField
-          label="Password"
+          label="Classification"
           variant="filled"
-          type="password"
+          type="text"
           required
           //   value={email}
-          onChange={(e) => (this.password = e.target.value)}
+          onChange={(e) => (this.all = e.target.value)}
+        />
+
+        <TextField
+          label="Bookmarked"
+          variant="filled"
+          type="text"
+          required
+          //   value={email}
+          onChange={(e) => (this.all = e.target.value)}
         />
 
         <div>
-            <Button variant="contained" type="submit">Login</Button>
+        <Button>Apply</Button>
         </div>
 
-        
-        <p className="forgot-password text-right">
-          <Link to={"/error"}>Forgot password?</Link>
-        </p>
+       
       </form>
     );
   }

@@ -1,41 +1,47 @@
-import React, {Component} from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import axios from "axios";
 
+class Forgot extends Component {
+  handleSubmit = (e) => {
+    e.preventDefault();
 
-export class Forgot extends Component {
+    const data = {
+      email: this.email,
+    };
 
-    handleSubmit = e => {
-        e.preventDefault(); 
-        
-        const data = {
-            email: this.email
-        };
+    axios
+      .post("forgot", data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-        axios.post('forgot', data).then(
-            res => {
-                console.log(res)
-            }
-        ).catch(
-            err => {
-                console.log(err);
-            }
-        )
-    }
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <h3>Forgot Password</h3>
 
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <h3>Forgot Password</h3>
+        <TextField
+          label="Email"
+          variant="filled"
+          type="email"
+          required
+          //   value={email}
+          onChange={(e) => (this.email = e.target.value)}
+        />
 
-                <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Email"
-                       onChange={e => this.email = e.target.value}/>
-                </div>
-
-                <button className="btn btn-primary btn-block">Submit</button>
-            </form>
-        )
-    }
-
+        <div>
+          <Button variant="outlined" type="submit">
+            Submit
+          </Button>
+        </div>
+      </form>
+    );
+  }
 }
+export default Forgot;
