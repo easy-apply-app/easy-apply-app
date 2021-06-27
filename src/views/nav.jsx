@@ -24,12 +24,20 @@ export default class Nav extends Component {
       buttons = (
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link to={"/login"} onClick={this.handleLogout} className="nav-link">
+            <Link
+              to={"/login"}
+              onClick={this.handleLogout}
+              className="nav-link"
+            >
               Login
             </Link>
           </li>
           <li className="nav-item">
-            <Link to={"/register"} onClick={this.handleLogout} className="nav-link">
+            <Link
+              to={"/register"}
+              onClick={this.handleLogout}
+              className="nav-link"
+            >
               Sign Up
             </Link>
           </li>
