@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+
 
 export default class Nav extends Component {
   handleLogout = () => {
@@ -48,15 +48,15 @@ export default class Nav extends Component {
     }
     return (
       <div>
-        <Button variant="contained" href="/">
+        <button variant="contained" href="/">
           Home
-        </Button>
-        <Button variant="contained" href="/register">
+        </button>
+        <button variant="contained" href="/register">
           Sign Up
-        </Button>
-        <Button variant="contained" href="/login">
+        </button>
+        <button variant="contained" href="/login">
           Login
-        </Button>
+        </button>
       </div>
     );
   }
