@@ -3,7 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 
-class Forgot extends Component {
+class Error extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -44,4 +44,4 @@ class Forgot extends Component {
     );
   }
 }
-export default Forgot;
+export default Error;

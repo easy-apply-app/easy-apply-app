@@ -1,85 +1,120 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import axios from "axios";
 
-import axios from 'axios';
+export default class Register extends Component {
+  state = {};
 
-export default class Register extends Component{
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      first_name: this.firstName,
+      last_name: this.lastName,
+      email: this.email,
+      password: this.password,
+      password_confirm: this.confirmPassword,
+    };
 
-    state = {};
+    axios
+      .post("http://localhost:8000/register", data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        this.setState({
+          message: err.response.data.message,
+        });
+      });
+  };
 
-    handleSubmit = e => {
-        e.preventDefault();
-        const data = {
-            first_name: this.firstName,
-            last_name: this.lastName,
-            email: this.email,
-            password: this.password,
-            password_confirm: this.confirmPassword
-        };
+  render() {
+    let error = "";
 
-        axios.post('http://localhost:8000/register', data).then(
-            res => {
-                console.log(res)
-            }
-        ).catch(
-            err => {
-                this.setState({
-                    message: err.response.data.message
-                })
-            }
-        )
+    if (this.state.message) {
+      error = (
+        <div className="alert alert-danger" role="alert">
+          {this.state.message}
+        </div>
+      );
     }
 
-    render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        {error}
 
-        let error = '';
+        <h3>Sign up</h3>
 
-        if (this.state.message) {
-            error = (
-                <div className="alert alert-danger" role="alert">
-                    {this.state.message}
-                </div>
-            )
-        }
+        <TextField
+          label="First Name"
+          variant="outlined"
+          type="text"
+          required
+          //   value={email}
+          onChange={(e) => (this.first_name = e.target.value)}
+        />
 
+        <TextField
+          label="Last Name"
+          variant="outlined"
+          type="text"
+          required
+          //   value={email}
+          onChange={(e) => (this.last_name = e.target.value)}
+        />
 
-        return(
-            <form onSubmit={this.handleSubmit}>
-                {error} 
-                
-                <h3>Sign up</h3>
+        <TextField
+          label="Age"
+          variant="outlined"
+          type="number"
+          required
+          //   value={email}
+          onChange={(e) => (this.age = e.target.value)}
+        />
 
-                <div className="form-group">
-                    <label>First Name</label>
-                    <input type="text" className="form-control" placeholder="First Name"
-                        onChange={e => this.firstName = e.target.value}/>
-                </div>
+        <TextField
+          label="Gender"
+          variant="outlined"
+          type="text"
+          required
+          //   value={email}
+          onChange={(e) => (this.gender = e.target.value)}
+        />
 
-                <div className="form-group">
-                    <label>Last Name</label>
-                    <input type="text" className="form-control" placeholder="Last Name" 
-                       onChange={e => this.lastName = e.target.value}/>
-                </div>
+        <TextField
+          label="Email"
+          variant="outlined"
+          type="email"
+          required
+          //   value={email}
+          onChange={(e) => (this.email = e.target.value)}
+        />
 
-                <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" className="form-control" placeholder="Email" 
-                     onChange={e => this.email = e.target.value}/>
-                </div>
+        <TextField
+          label="Password"
+          variant="outlined"
+          type="Password"
+          required
+          //   value={email}
+          onChange={(e) => (this.password = e.target.value)}
+        />
 
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Password" 
-                       onChange={e => this.password = e.target.value}/>
-                </div>
+        <TextField
+          label="Confirm Password"
+          variant="outlined"
+          type="confirm password"
+          required
+          //   value={email}
+          onChange={(e) => (this.confirm_password = e.target.value)}
+        />
+        <div>
+          <Button variant="contained" type="submit">
+            Sign Up
+          </Button>
+        </div>
 
-                <div className="form-group">
-                    <label>Confirm Password</label>
-                    <input type="password" className="form-control" placeholder="Confirm Password" 
-                       onChange={e => this.confirmPassword = e.target.value}/>
-                </div>
-
-                <button className="btn btn-primary btn-block">Sign Up</button>
-            </form>
-        )
-    }
+        
+      </form>
+    );
+  }
 }
