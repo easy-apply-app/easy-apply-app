@@ -69,10 +69,19 @@ export default class Login extends Component {
         />
 
         <div>
-            <Button variant="contained" type="submit">Login</Button>
+          <Button variant="contained" href="/">
+            Cancel
+          </Button>
+          {/* <Button variant="contained" color="primary" type="submit">
+            Login
+          </Button> */}
+          <Button type="submit" variant="contained" color="primary" href="/searchDAta">
+          Login
+        </Button>
         </div>
 
-        
+         
+
         <p className="forgot-password text-right">
           <Link to={"/error"}>Forgot password?</Link>
         </p>

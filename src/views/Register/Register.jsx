@@ -108,9 +108,12 @@ export default class Register extends Component {
           onChange={(e) => (this.confirm_password = e.target.value)}
         />
         <div>
-          <Button variant="contained" type="submit">
-            Sign Up
-          </Button>
+          <Button variant="contained" href="/">
+          Cancel
+        </Button>
+        <Button type="submit" variant="contained" color="primary" href="/login">
+          Sign up
+        </Button>
         </div>
 
         
@@ -118,3 +121,6 @@ export default class Register extends Component {
     );
   }
 }
+
+
+

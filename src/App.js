@@ -5,16 +5,16 @@ import "./App.css";
 // import users  from "./api/web";
 // import Cms from "./api/cms";
 // import Web from "./api/web.jsx";
-import Home from "./views/home";
-import Login from "./views/login";
-import Nav from "./views/nav";
-import Register from "./views/register";
+import Home from "./views/Home";
+import Login from "./views/Login";
+import Nav from "./views/Nav";
+import Register from "./views/Register";
 
-import  Reset  from "./views/reset";
-import Name from "./views/name";
-import Forgot from "./views/forgot";
-
-
+import Reset from "./views/Reset";
+import Name from "./views/Name";
+import Forgot from "./views/Forgot";
+import displaySearch from "../src/component/searchDAta/search";
+import Details from "./componentURL/Details";
 
 export default class App extends Component {
   state = {};
@@ -44,35 +44,40 @@ export default class App extends Component {
       (err) => {
         console.log(err);
       }
-    )
+    );
+  }
+
+  setUser = (user) => {
+    this.setState({
+      user: user,
+    });
   };
 
-setUser = user => {
-  this.setState({
-    user: user,
-  });
-}
-
   render() {
-
     return (
       <BrowserRouter>
-
         <div className="App">
-
-          <Nav user={this.state.user} setUser={this.setUser}/>
+          <Nav user={this.state.user} setUser={this.setUser} />
 
           <div className="auth-wrapper">
-
             <div className="auth-inner">
               <Switch>
-                <Route exact path="/" component={() => <Home user={this.state.user} />}/>
-                <Route exact path="/login" component={() => <Login setUser={this.setUser} />}/>
-                <Route exact path="/register" component={Register}/>
-                <Route exact path="/forgot" component={Forgot}/>
-                <Route exact path="/reset" component={Reset}/>
-                <Route exact path="/name" component={Name}/>
-                
+                <Route
+                  exact
+                  path="/"
+                  component={() => <Home user={this.state.user} />}
+                />
+                <Route
+                  exact
+                  path="/login"
+                  component={() => <Login setUser={this.setUser} />}
+                />
+                <Route exact path="/register" component={Register} />
+                <Route exact path="/forgot" component={Forgot} />
+                <Route exact path="/reset" component={Reset} />
+                <Route exact path="/name" component={Name} />
+                <Route exact path="/" component={displaySearch} />
+                <Route exact path="/componentURL/:id" component={Details} />
               </Switch>
 
               <Home />
