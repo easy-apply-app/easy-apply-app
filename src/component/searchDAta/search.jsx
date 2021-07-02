@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import app from "../../component/Api/app";
 import cms from "../../component/Api/cms";
 import DisplaySearch from "../../component/searchDAta/displayDAta";
-import Footer from "../../component/footer/footer"
+import Footer from "../../component/Footer/Footer"
 
 import { Grid,TextField} from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
