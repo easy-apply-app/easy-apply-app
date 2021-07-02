@@ -1,25 +1,3 @@
-// import React, {Component} from 'react';
-
-// export default class Home extends Component {
-//     state = {};
-
-
-//     render() {
-
-//         if(this.props.user){
-//             return (
-//             <h2>Hi {this.props.user.first_name} {this.props.user.last_name}</h2>
-//             )
-//         }
-//         return (
-//             <h2>Welcome to Easy-Apply-App</h2>
-            
-//         )
-//     }
-
-// }
-
-
 import React from "react";
 import "./Home.css";
 import { useState } from "react";
@@ -63,10 +41,13 @@ const Home = () => {
   
 
   return (
+    <div id="card">
+    {/* <div id="card-content"></div> */}
+    
     <div className="Home">
-      <h1>
+      <h3>
       Welcome to Easy-Apply-App
-     </h1>
+     </h3>
 
      <img src={logo} alt="Logo" />
 
@@ -74,16 +55,40 @@ const Home = () => {
       <CssBaseline />
       {/* <Button onClick={() => setLight(prev => !prev)}>Toggle Theme</Button> */}
     </MuiThemeProvider>
-      <Button variant="contained" href="/LogIn" onClick={handleOpen}>
+    <div>
+      <Button variant="contained" color="primary" href="/LogIn" onClick={handleOpen}>
         LogIn
       </Button>
-
-      <Button variant="contained" href="/Register" onClick={handleOpen}>
+      <Button variant="contained" color="primary" href="/Register" onClick={handleOpen}>
         Register
       </Button>
-      {/* <ModalDialog open={open} handleClose={handleClose} /> */}
+    
+    </div>
+    </div>
     </div>
   );
 };
 
 export default Home
+
+{/* 
+// import React, {Component} from 'react';
+
+// export default class Home extends Component {
+//     state = {};
+
+
+//     render() {
+
+//         if(this.props.user){
+//             return (
+//             <h2>Hi {this.props.user.first_name} {this.props.user.last_name}</h2>
+//             )
+//         }
+//         return (
+//             <h2>Welcome to Easy-Apply-App</h2>
+            
+//         )
+//     }
+
+// } */}

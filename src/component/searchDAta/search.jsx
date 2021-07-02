@@ -6,6 +6,7 @@ import DisplaySearch from "../../component/searchDAta/displayDAta";
 import Footer from "../../component/Footer/Footer"
 
 import { Grid,TextField} from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 function DataSearch() {
@@ -74,7 +75,11 @@ function DataSearch() {
         <Grid>
                 <Footer />
         </Grid>
-      </Grid>
+      </Grid> <br/>
+
+      <Button type="submit" variant="contained" href="/">
+              Back
+            </Button>
     </div>
   );
 }
