@@ -1,3 +1,35 @@
+// import React, { useState, useEffect } from 'react';
+// import institutions from './api/institutions';
+
+
+// export const App = () => {
+//   const [list, setList] = useState(null);
+  
+//   useEffect(() => institutions.read().then(setList), [])
+  
+//   if (!list) return <div>Loading..</div>;
+
+//   return (
+//     <div>
+//       {list.map(([{ id, name, photo, province, website, classification }]) => (
+//         <div key={id}>
+//           <h2>{name}</h2>
+//           <img src={photo} alt="" />
+//           <ul>
+//             <li>{province}</li>
+//             <li>{website}</li>
+//             <li>{classification}</li>
+//           </ul>
+
+//         </div>
+//       ))}
+      
+//       </div>
+//   );
+// };
+//  export default App;
+
+
 // import React, { Component } from "react";
 // import { BrowserRouter, Switch, Route } from "react-router-dom";
 // import axios from "axios";
