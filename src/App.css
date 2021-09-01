@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 body {
-  background: #ee96f1 !important;
+  background: #f3f2f3 !important;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
@@ -75,4 +75,5 @@ body, html, .App, #root, .auth-wrapper {
 .forgot-password a {
   color: #167bff;
 }
+
 
