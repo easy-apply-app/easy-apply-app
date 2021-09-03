@@ -2,17 +2,21 @@ import axios from "axios";
 
 const GET_ALL_INSTITUTIONS_QUERY = `
 {
-    institutions {
-      id
-      website
-      province
-      photo {
-        url
-      }
-      name
-      classification
+  institutions {
+    id
+    website
+    province
+    location{
+      latitude
+      longitude
     }
+    photo {
+      url
+    }
+    name
+    classification
   }
+}
   `;
 
 const getAllInstitutions = async () => {

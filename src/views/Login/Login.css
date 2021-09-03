@@ -80,3 +80,22 @@ label {
   margin: -1.1rem auto 0 auto;
   width: 89px;
 }
+.sign{
+  text-align: center;
+  width: "300px";
+  margin: "5px auto";
+  padding-top: 4rem;
+  font-weight: bold;
+  color: black;
+  
+}
+
+.Login{
+
+  height: 100vh;
+  font-size: 1.6rem;
+  padding-top: 3.2rem;
+}
+.A{
+  width: 300px;
+}

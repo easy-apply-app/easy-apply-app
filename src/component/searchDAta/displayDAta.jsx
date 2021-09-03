@@ -1,38 +1,54 @@
 import React, { useState, useEffect } from "react";
-// import Fuse from "Fuse.js";
-import app from "../../component/Api/app";
-import cms from "../../component/Api/cms";
-
+import app from "../Api/app";
+import cms from "../Api/cms";
+import { makeStyles } from "@material-ui/core";
 import { Grid, Typography, Paper } from "@material-ui/core";
-import { Link, useHistory } from "react-router-dom";
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    padding: theme.spacing(2),
+
+    "& .MuiTextField-root": {
+      margin: theme.spacing(1),
+      width: "350px",
+    },
+    "& .MuiButtonBase-root": {
+      margin: theme.spacing(2),
+    },
+  },
+  names: {
+    color: "black",
+
+  }
+  
+}));
 
 function DisplaySearch() {
+  const classes = useStyles();
+
   const [institutions, setInstitutions] = useState([]);
 
   const checkAndSync = async () => {
-    if (app.checkIfCanSync()) {
+   
+    // if (app.checkIfCanSync()) {
       const response = await cms.getAllInstitutions();
       setInstitutions(response);
       return;
-    }
-    const responseString = window.localStorage.getItem("institutions") 
-    const response = responseString ? JSON.parse(responseString): []
-    setInstitutions(response);
+    // }
+    // const responseString = window.localStorage.getItem("institutions") 
+    // const response = responseString ? JSON.parse(responseString): []
+    // setInstitutions(response);
   };
   useEffect(() => checkAndSync(), []);
 
-  const history = useHistory();
-  // const navigateTo = () => history.push("/componentURL");
-  const goToDetails = (id) => {
-    history.push(`/componentURL/${id}`);
-  };
-
-  
-
   return (
-    <div>
-      {institutions.map(({ id, name, province, photo }) => (
-        <Grid item onClick={() => goToDetails(id)} style={{ padding: "0.8rem" }}>
+    <div className={classes.root}>
+      {institutions.map(({  name,website, photo }) => (
+         
+        <Grid item style={{ padding: "0.8rem" }}>
           <Paper variant="outlined">
             <Grid style={{ display: "flex" }}>
               <Grid>
@@ -42,14 +58,11 @@ function DisplaySearch() {
                   alt=""
                 ></img>
               </Grid>
-
               <Grid>
                 <Typography variant="h5">
-                  <h1>{name}</h1>
-                  {/* <p>{id}</p> */}
+                  <h2 className={classes.names}>{name}</h2>
                 </Typography>
-                <h2>{province}</h2>
-                <Link to={`/componentURL/${id}`}>View</Link>
+                <a href={website} target="_blank">{website}</a>
               </Grid>
             </Grid>
           </Paper>
@@ -59,3 +72,8 @@ function DisplaySearch() {
   );
 }
 export default DisplaySearch;
+
+  // const navigateTo = () => history.push("/componentURL");
+  // const goToDetails = (id) => {
+    // history.push(`/componentURL/${id}`);
+  // };

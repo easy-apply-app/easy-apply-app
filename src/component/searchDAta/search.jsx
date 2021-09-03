@@ -3,13 +3,30 @@ import React, { useState, useEffect } from "react";
 import app from "../../component/Api/app";
 import cms from "../../component/Api/cms";
 import DisplaySearch from "../../component/searchDAta/displayDAta";
-import Footer from "../../component/Footer/Footer"
 
+import { makeStyles } from "@material-ui/core";
 import { Grid,TextField} from "@material-ui/core";
-import Button from "@material-ui/core/Button";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
+const useStyles = makeStyles((theme) => ({
+  mainH: {
+    textAlign: "center",
+    color: "black",
+    fontWteight: "bold",
+    paddingTop:" 5.5rem",
+    fontSize: "2.9rem",
+    fontWeight: "bold",
+  },
+  search: {
+    textAlign: "center",
+
+  }
+  
+}));
+
 function DataSearch() {
+  const classes = useStyles();
+
   const [institutions, setInstitutions] = useState([]);
   const [thisquery,setQuery] = useState("")
   const checkAndSync = async () => {
@@ -47,9 +64,9 @@ function DataSearch() {
     <div>
       <Grid tyle={{marginTop:"1.2rem"}} spacing={2} >
         
-        <h1>EASY APPLICATION</h1>
+        <h1 className={classes.mainH}>EAZY APPLY</h1>
 
-        <div container style={{ width: 300 }}>
+        <div className={classes.search} container style={{ width: 300 }}>
           <Autocomplete
             freeSolo
             id="free-solo-2-demo"
@@ -62,7 +79,6 @@ function DataSearch() {
                 margin="normal"
                 variant="outlined"
                 value={thisquery}
-                // onSubmit={searchRow(institutions)}
                 onChange={(e) => setQuery(e.target.value)}
                 InputProps={{ ...params.InputProps, type: "search" }}
               />
@@ -72,14 +88,7 @@ function DataSearch() {
         <Grid>
                 <DisplaySearch data={searchRow(institutions)} />
         </Grid>
-        <Grid>
-                <Footer />
-        </Grid>
-      </Grid> <br/>
-
-      <Button type="submit" variant="contained" href="/">
-              Back
-            </Button>
+      </Grid>
     </div>
   );
 }

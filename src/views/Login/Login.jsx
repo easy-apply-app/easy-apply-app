@@ -7,6 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
+
 const themeLight = createMuiTheme({
   palette: {
     background: {
@@ -36,12 +37,25 @@ const useStyles = makeStyles((theme) => ({
 
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: "300px",
+      width: "350px",
     },
     "& .MuiButtonBase-root": {
       margin: theme.spacing(2),
     },
   },
+  btnPurplee: {
+    display: "block",
+   width: "300px",
+  //  paddingRight: "3rem",
+    backgroundColor: "purple",
+    textAlign: "center"
+  },
+ 
+  fogotlink: {
+ color: "purple",
+ fontSize:"1rem",
+ textAlign: "center",
+  }
 }));
 
 const LogIn = ({ handleClose }) => {
@@ -50,7 +64,7 @@ const LogIn = ({ handleClose }) => {
   // create state variables for each input
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [light, setLight] = React.useState(true);
+  const [light] = React.useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,10 +73,9 @@ const LogIn = ({ handleClose }) => {
   };
 
   return (
-    <div id="card">
-      {/* <div id="card-content"></div> */}
+   
       <div className="Login">
-        <h1>Login</h1>
+        <h1 className="sign"> Sign In</h1>
         <form className={classes.root} onSubmit={handleSubmit}>
           <TextField
             label="Email"
@@ -80,24 +93,22 @@ const LogIn = ({ handleClose }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div>
-            <MuiThemeProvider theme={light ? themeLight : themeDark}>
-              <CssBaseline />
-              {/* <Button onClick={() => setLight(prev => !prev)}>Toggle Theme</Button> */}
-            </MuiThemeProvider>
-            <Button variant="contained" onClick={handleClose} href="/">
+          <div className="logButton">
+            <Button className="A" variant="contained" onClick={handleClose} href="/">
               Cancel
             </Button>
-            <Button type="submit" variant="contained" color="primary" href="/">
-              LogIn
+            <Button className={classes.btnPurplee} type="submit" variant="contained" href="/displaySearch">
+              sign In
             </Button>
-            <br />
-            <Link to="/login/reset">Forgot password?</Link> <br />
+            
             {/* <a href="#" id="Register">Don't have account yet?</a> <br/> */}
           </div>
+          <br />
+            <Link className={classes.fogotlink} to="/login/reset">Forgot password?</Link> 
+            <br />
         </form>
       </div>
-    </div>
+    
   );
 };
 
