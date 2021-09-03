@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import app from "../Api/app";
+
 import cms from "../Api/cms";
 import { makeStyles } from "@material-ui/core";
 import { Grid, Typography, Paper } from "@material-ui/core";
@@ -62,7 +62,7 @@ function DisplaySearch() {
                 <Typography variant="h5">
                   <h2 className={classes.names}>{name}</h2>
                 </Typography>
-                <a href={website} target="_blank">{website}</a>
+                <a href={website} rel="noreferrer" target="_blank" >{website}</a>
               </Grid>
             </Grid>
           </Paper>

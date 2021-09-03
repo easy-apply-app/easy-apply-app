@@ -3,29 +3,12 @@ import "./Login.css";
 import { makeStyles } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
 
-const themeLight = createMuiTheme({
-  palette: {
-    background: {
-      default: "#2196f3",
-    },
-  },
-});
 
-const themeDark = createMuiTheme({
-  palette: {
-    background: {
-      default: "#222222",
-    },
-    text: {
-      primary: "#ffffff",
-    },
-  },
-});
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,7 +47,7 @@ const LogIn = ({ handleClose }) => {
   // create state variables for each input
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [light] = React.useState(true);
+  // const [light] = React.useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
