@@ -1,24 +1,22 @@
 import axios from "axios";
-
 const GET_ALL_INSTITUTIONS_QUERY = `
 {
-  institutions {
-    id
-    website
-    province
-    location{
-      latitude
-      longitude
+    institutions {
+      id
+      website
+      province
+      location{
+        latitude
+        longitude
+      }
+      photo {
+        url
+      }
+      name
+      classification
     }
-    photo {
-      url
-    }
-    name
-    classification
   }
-}
   `;
-
 const getAllInstitutions = async () => {
   const {
     data: {
@@ -29,14 +27,11 @@ const getAllInstitutions = async () => {
     { query: GET_ALL_INSTITUTIONS_QUERY }
   );
  console.log(institutions)
- 
   window.localStorage.setItem('institutions', JSON.stringify(institutions));
   return institutions;
-
-  
 };
-
 const cms = {
     getAllInstitutions
+
 }
 export default  cms

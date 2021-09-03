@@ -1,0 +1,33 @@
+.Home-logo {
+    height: 10pxpx;
+    width: 10;
+    pointer-events: none;
+    justify-content: center;
+    width: 20;
+    position: absolute;
+    
+  }
+
+  #card {
+    background: #fbfbfb;
+    border-radius: 8px;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
+    height: 200px;
+    margin: 6rem auto 8.1rem auto;
+    width: 329px;
+  }
+  .Home {
+    background-color: purple;
+    padding-top: 3rem;
+    text-align: center;
+    padding-top: 5.5rem;
+    height: 100%;
+  }
+  .buttonFlex {
+    display: block;
+    margin: 0 auto;
+  }
+  .Stater{
+    font-size: 2.9rem;
+    font-weight: bold;
+  }
